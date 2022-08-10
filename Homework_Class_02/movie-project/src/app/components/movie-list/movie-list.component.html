@@ -1,0 +1,11 @@
+<div class="movie__list">
+  <app-movie
+    [movieTitle]="movieTitle"
+    (movieToSendToParent)="onMovieReceived($event)"
+  ></app-movie>
+  <h3>Movie List Title from app.component: {{ movieListTitle }}</h3>
+  <h3>Movie name: {{ name }}</h3>
+  <h3>Release date: {{ releaseDate }}</h3>
+  <h3>Producer Name: {{ producerName }}</h3>
+  <h3>Genre: {{ genre }}</h3>
+</div>
