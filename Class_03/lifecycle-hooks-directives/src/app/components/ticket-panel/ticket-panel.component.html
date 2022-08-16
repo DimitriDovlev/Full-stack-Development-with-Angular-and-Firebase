@@ -1,0 +1,63 @@
+<h2>Ticket Panel</h2>
+
+<app-ticket
+  *ngFor="let currentTicket of tickets"
+  [ticket]="currentTicket"
+  (emitTicket)="displayTicket($event)"
+></app-ticket>
+
+<hr />
+<div>
+  <!-- ngIf -->
+  <!-- A structural directive that conditionally includes a template based on the value of an expression coerced to Boolean.  -->
+  <div *ngIf="!!ticketToDisplay">
+    <div>
+      <h3>{{ ticketToDisplay.title }}</h3>
+    </div>
+    <div>
+      <p>{{ ticketToDisplay.text }}</p>
+      <p>{{ ticketToDisplay.assignee }}</p>
+      <p>{{ ticketToDisplay.status }}</p>
+    </div>
+  </div>
+</div>
+<hr />
+<!-- ngStyle -->
+<!-- An attribute directive that updates styles for the containing HTML element. Sets one or more style properties, specified as colon-separated key-value pairs. -->
+<button (click)="generateRandomColor()">Randomize</button>
+<p [ngStyle]="{ color: randomColor }">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat quasi
+  dolorum, tempora ullam culpa aliquid incidunt laboriosam minus quos maxime
+  voluptatem sit sapiente similique in placeat. Tempore vero incidunt ullam?
+</p>
+
+<button (click)="displayStarWarsPeople()">Display Star Wars People</button>
+
+<div *ngIf="displayPeople">
+  <div *ngFor="let person of peopleData">
+    <!-- The <ng-container> allows us to use structural directives without any extra element, making sure that the only DOM changes being applied are those dictated by the directives themselves. -->
+    <!-- It lets us render stuff without using an HTML element, like React's <Fragment> -->
+    <ng-container *ngIf="person.films.length > 5">
+      <h3>{{ person.name }}</h3>
+    </ng-container>
+  </div>
+</div>
+
+<!-- ngTemplate -->
+<!-- With <ng-template>, you can define template content that is only being rendered by 
+  Angular when you, whether directly or indirectly, specifically instruct it to do so, 
+  allowing you to have full control over how and when the content is displayed. -->
+
+<div [ngTemplateOutlet]="template1"></div>
+
+<ng-template #template1>
+  <h1>Template 1</h1>
+  <h2>H2</h2>
+  <h3>H3</h3>
+</ng-template>
+
+<ng-template #template2>
+  <h1>Template 1</h1>
+  <h2>H2</h2>
+  <h3>H3</h3>
+</ng-template>
