@@ -1,0 +1,20 @@
+<div>
+  <div [ngClass]="teamData.conference === 'East' ? 'east' : 'west'">
+    <div [ngClass]="teamData.division">
+      {{ teamData.full_name }}
+      {{ teamData.division }}
+    </div>
+  </div>
+  <div>
+    <button (click)="teamAbbreviation()">
+      Team Abbreviation
+    </button>
+  </div>
+  <!-- <p
+    [ngStyle]="{
+      backgroundColor: teamData.conference === 'East' ? 'blue' : 'red'
+    }"
+  >
+    {{ teamData.full_name }}
+  </p> -->
+</div>

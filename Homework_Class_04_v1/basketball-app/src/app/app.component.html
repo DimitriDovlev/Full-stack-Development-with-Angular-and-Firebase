@@ -1,0 +1,19 @@
+<div>
+  <button (click)="renderTeam()">West/East</button>
+</div>
+<div *ngFor="let team of teamData | filter: teamToDisplay">
+  <app-team
+    (emitTeamAbbreviation)="onClickTeamAbbreviation($event)"
+    [teamData]="team"
+  ></app-team>
+</div>
+
+<div
+  *ngFor="let player of playerData | filterByAbbreviation: playerAbbreviation"
+>
+  <app-player [playerData]="player"></app-player>
+</div>
+
+<div *ngFor="let stat of statsData">
+  <app-stats [statsData]="stat"></app-stats>
+</div>
