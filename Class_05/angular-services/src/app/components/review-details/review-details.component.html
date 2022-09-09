@@ -1,0 +1,24 @@
+<section *ngIf="!!selectedMovie">
+  <div>
+    <h2>{{ selectedMovie.title }}</h2>
+    <span>{{ selectedMovie.rating }}</span>
+  </div>
+  <div>
+    <h3>Movie Details</h3>
+    <div>
+      <p>Year: {{ selectedMovie.year }}</p>
+      <p>Director: {{ selectedMovie.director }}</p>
+      <p>Genres: {{ selectedMovie.genres }}</p>
+    </div>
+  </div>
+  <div>
+    <h3>Review</h3>
+    <p>{{ selectedMovie.text }}</p>
+    <div>
+      <p>
+        <em>{{ selectedMovie.author }}</em>
+      </p>
+      <button type="button" (click)="onLikeClick()">Like!</button>
+    </div>
+  </div>
+</section>
