@@ -1,0 +1,72 @@
+<form (ngSubmit)="onFormSubmit()" [formGroup]="expenseForm">
+  <div class="form-subgroup basic-data" formGroupName="basicData">
+    <div class="form-group">
+      <label for="expense-title">Title</label>
+      <input
+        type="text"
+        autocomplete="off"
+        class="form-input"
+        id="expense-title"
+        formControlName="title"
+      />
+    </div>
+    <p
+      class="help-block"
+      *ngIf="expenseForm.get('basicData.title')?.errors?.['nameIsForbidden']"
+    >
+      This title is blocked
+    </p>
+    <div class="form-group">
+      <label for="expense-amount">Amount</label>
+      <input
+        type="text"
+        autocomplete="off"
+        class="form-input"
+        formControlName="amount"
+      />
+    </div>
+    <div class="form-group">
+      <label for="expense-date">Date</label>
+      <input
+        type="date"
+        autocomplete="off"
+        class="form-input"
+        id="expense-date"
+        formControlName="date"
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="expense-priority">Expense Priority</label>
+    <select id="expense-priority" class="form-input" formControlName="priority">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="expense-comment">Comment</label>
+    <textarea
+      id="expense-comment"
+      class="form-input"
+      cols="30"
+      rows="10"
+      formControlName="comment"
+    ></textarea>
+    <p class="comment-length">
+      {{ expenseForm.value.comment.length }}/{{ maximumCommentSize }}
+    </p>
+  </div>
+  <div class="form-group">
+    <div class="radio" *ngFor="let type of paymentType">
+      <input
+        type="radio"
+        [id]="type"
+        [value]="type"
+        formControlName="payType"
+      />
+      <label [for]="type">{{ type }}</label>
+    </div>
+  </div>
+  <button class="btn" type="submit">Submit</button>
+</form>

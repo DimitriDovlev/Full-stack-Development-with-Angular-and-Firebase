@@ -1,0 +1,6 @@
+<div class="container" *ngIf="selectedOrder">
+  <h1>{{ selectedOrder.id }}</h1>
+  <ul *ngFor="let item of selectedOrder.items">
+    <li>{{ item }}</li>
+  </ul>
+</div>
